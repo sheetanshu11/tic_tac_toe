@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import random
-
+#Function to display board to players
 def display_board(board):
 	print('\n'*100)
 	print(board[7]+'|'+board[8]+'|'+board[9])
@@ -8,7 +8,7 @@ def display_board(board):
 	print(board[4]+'|'+board[5]+'|'+board[6])
 	print('-----')
 	print(board[1]+'|'+board[2]+'|'+board[3])
-
+#Function taking player's input
 def player_input():
 	marker=''
 	while marker != 'X' and marker!= 'O':
@@ -19,13 +19,13 @@ def player_input():
 	else:
 		player2='X'
 	return player1,player2
-
+#Function to place symbol at location where we want
 def place_marker(board,marker,position):
 	board[position]=marker
-
+#Fuction checking the winner of match
 def win_check(board, mark):
 	return ((board[1] == board[2] == board[3] == mark) or (board[4] == board[5] == board[6] == mark) or ( board[7] == board[8] == board[9] == mark) or ( board[1] == board[4] == board[7] == mark) or ( board[2] == board[5] == board[8] == mark) or ( board[3] == board[6] == board[9] == mark) or ( board[3] == board[5] == board[7] == mark) or ( board[1] == board[5] == board[9] == mark))
-
+#Function to decide who plays first
 def choose_first():
 	if random.randint==0:
 		return 'Player 1'
@@ -34,19 +34,19 @@ def choose_first():
 
 def space_check(board,position):
 	return board[position]==' '
-
+#Function to check if any more moves left on board or not
 def full_board_check(board):
 	for i in range(1,10):
 		if space_check(board,i):
 			return False
 	return True
-
+#Function to decide where player marks his symbol
 def player_choice(board):
 	position=0
 	while position not in [1,2,3,4,5,6,7,8,9] or not space_check(board,position):
 		position=int(input('Choose your next position:(1-9):\n'))
 	return position
-
+#Function asking players if they want to play again
 def replay():
 	return input("Do you want to play again? Enter yes or No: ").lower().startswith('y')
 
@@ -61,7 +61,7 @@ def replay():
 
 
 print('Welcome to Tic Tac Toe!')
-
+#Main logic of the game
 while True:
 	# Reset the board
 	theBoard = [' '] * 10
